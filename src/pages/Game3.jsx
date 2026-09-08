@@ -207,38 +207,53 @@ export default function Game3() {
               <p className="font-mono-ui text-[0.6rem] uppercase tracking-[0.3em] opacity-60">
                 Spec sheet · Pinned above the switch bench
               </p>
-              <p className="mt-3 text-base leading-relaxed sm:text-lg">
-                Door 03 listens to two wall switches, A and B — but not
-                directly. Their answers travel through two small chips first:
+              <p className="mt-4 font-display text-xl tracking-[0.12em]">
+                THE JOB
+              </p>
+              <p className="mt-1 text-base leading-relaxed sm:text-lg">
+                Door 03 opens for exactly one switch pattern — the other three
+                stay locked:
+              </p>
+              <div className="mt-2 space-y-0.5 font-mono-ui text-[0.7rem] uppercase tracking-[0.12em]">
+                <p className="text-center opacity-80">A down · B down → locked</p>
+                <p className="text-center opacity-80">A down · B up → locked</p>
+                <p className="text-center font-bold">
+                  A up · B down → open ← this one
+                </p>
+                <p className="text-center opacity-80">A up · B up → locked</p>
+              </div>
+              <p className="mt-4 font-display text-xl tracking-[0.12em]">
+                THE CHIPS
+              </p>
+              <p className="mt-1 text-base leading-relaxed sm:text-lg">
+                Two chips sit between the switches and the door:
               </p>
               <p className="mt-2 text-center font-mono-ui text-[0.7rem] uppercase tracking-[0.12em] opacity-80">
-                A + B → chip 1 → answer
+                A + B → chip 1 → answer → chip 2 → door 03
               </p>
-              <p className="text-center font-mono-ui text-[0.7rem] uppercase tracking-[0.12em] opacity-80">
-                answer + A → chip 2 → door 03
+              <p className="mt-2 text-base leading-relaxed sm:text-lg">
+                Tap a chip to cycle its rule — the name on it (AND, OR, NAND,
+                NOR, XOR, XNOR) is the rule. Plain words: cheat sheet below.
               </p>
-              <p className="mt-3 text-base leading-relaxed sm:text-lg">
-                A chip is a gatekeeper with one rule. Each switch asks it a
-                question: up = 1 = yes, down = 0 = no. The chip applies its
-                rule and answers 1 — let it through — or 0 — stop. The door
-                opens only when chip 2 answers 1.
+              <p className="mt-4 font-display text-xl tracking-[0.12em]">
+                WHAT TO DO
               </p>
-              <p className="mt-3 text-base leading-relaxed sm:text-lg">
-                The warden’s spec: the door may open in exactly one of the
-                four switch patterns. Flip A and B below and check:
-              </p>
-              <div className="mt-2 space-y-0.5 font-mono-ui text-[0.7rem] uppercase tracking-[0.12em] opacity-80">
-                <p className="text-center">A down · B down → locked</p>
-                <p className="text-center">A down · B up → locked</p>
-                <p className="text-center">A up · B down → open</p>
-                <p className="text-center">A up · B up → locked</p>
-              </div>
-              <p className="mt-3 text-base leading-relaxed sm:text-lg">
-                Tap a chip to change its rule — the name on it (AND, OR,
-                NAND…) is the rule, and the cheat sheet under the bench says
-                each one in plain words. When every pattern above behaves
-                right, run the policy test: it checks all four at once.
-              </p>
+              <ol className="mt-2 list-decimal space-y-2 pl-6 text-base leading-relaxed sm:text-lg">
+                <li>
+                  Tap chip 1 until it says <strong>NAND</strong>. Tap chip 2
+                  until it says <strong>AND</strong>. (Hint: that pair is the
+                  answer — NAND fails only when both A and B are up; AND
+                  passes only when both its inputs are up.)
+                </li>
+                <li>
+                  Flip switches A and B below — the door must show OPEN only
+                  for A up · B down, and LOCKED for the other three patterns.
+                </li>
+                <li>
+                  When all four match, press RUN THE POLICY TEST. It checks
+                  all four at once — a pass opens door 03.
+                </li>
+              </ol>
               <p className="mt-3 font-mono-ui text-[0.65rem] uppercase tracking-[0.15em] opacity-70">
                 Down = 0 = no · Up = 1 = yes
               </p>

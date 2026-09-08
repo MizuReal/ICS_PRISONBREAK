@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { CheckIcon, KeyIcon, LockIcon } from '../components/icons'
+import { ArrowRightIcon, CheckIcon, KeyIcon, LockIcon } from '../components/icons'
 import { escapeGame, games } from '../data/games'
 import { useProgress } from '../state/progress-context'
 
@@ -152,6 +152,33 @@ export default function Home() {
               {keyCount} / {games.length} keys
             </span>
           </div>
+        </Link>
+      </section>
+
+      <section aria-label="Cell block utility">
+        <Link
+          to="/decypher"
+          className="group flex flex-wrap items-center gap-x-4 gap-y-3 rounded-md border border-concrete-700 bg-concrete-900/40 p-4 backdrop-blur-sm transition-colors sm:gap-x-6 sm:p-5 hover:border-jumpsuit-500/60 hover:bg-concrete-800/60"
+        >
+          <span className="flex size-14 shrink-0 items-center justify-center rounded-sm border border-jumpsuit-500/40 bg-concrete-900 font-display text-xl tracking-wider text-jumpsuit-400 transition-colors group-hover:border-jumpsuit-500/70 sm:size-18 sm:text-2xl">
+            A–Z
+          </span>
+          <span className="min-w-0 flex-1 text-left">
+            <span className="block font-mono-ui text-[0.6rem] uppercase tracking-[0.25em] text-concrete-500">
+              Cell-block utility · Cipher desk
+            </span>
+            <span className="mt-1 block font-display text-2xl tracking-[0.12em] text-concrete-100 transition-colors group-hover:text-jumpsuit-300 sm:text-[1.7rem]">
+              THE CIPHER MANUAL
+            </span>
+            <span className="mt-0.5 block text-sm text-concrete-400">
+              Every letter in hex — type a word, read it in code. No keys, just
+              the crib sheet.
+            </span>
+          </span>
+          <span className="hidden shrink-0 items-center gap-2 font-mono-ui text-[0.65rem] font-bold uppercase tracking-[0.2em] text-concrete-400 transition-colors group-hover:text-jumpsuit-400 sm:inline-flex">
+            Open the desk
+            <ArrowRightIcon className="h-4 w-4" />
+          </span>
         </Link>
       </section>
     </div>
