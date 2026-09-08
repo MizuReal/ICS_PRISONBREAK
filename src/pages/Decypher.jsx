@@ -61,10 +61,8 @@ export default function Decypher() {
             Rule #1 — no talking in code on the yard
           </p>
           <p className="mt-3 text-base leading-relaxed sm:text-lg">
-            Every letter on this block has a hex name — two digits straight
-            off the ASCII chart. Look up any letter here, or feed the desk a
-            word and watch it come out in code. Write your notes in hex and
-            the guards will walk right past them.
+            Decipher the hidden code, complete what remains, and unlock your
+            path to freedom.
           </p>
           <p className="mt-3 font-mono-ui text-[0.6rem] uppercase tracking-[0.3em] opacity-70">
             Tip: spaces read as 20 — ROOT MODE prints 52 4F 4F 54 20 4D 4F 44
