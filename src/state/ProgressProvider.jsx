@@ -1,8 +1,20 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { ProgressContext } from './progress-context'
 
 export default function ProgressProvider({ children }) {
   const [completed, setCompleted] = useState(() => new Set())
+
+  useEffect(() => {
+    if (completed.size === 0) return
+
+    function handleBeforeUnload(e) {
+      e.preventDefault()
+      e.returnValue = ''
+    }
+
+    window.addEventListener('beforeunload', handleBeforeUnload)
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload)
+  }, [completed])
 
   const value = useMemo(
     () => ({

@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowLeftIcon, CheckIcon, KeyIcon } from '../components/icons'
+import { ArrowLeftIcon, ArrowRightIcon, KeyIcon } from '../components/icons'
 import { useProgress } from '../state/progress-context'
 
 const RIDDLE = [
-  'I have a mouth, but I never eat.',
-  'I have a head, but I never think.',
-  'I can open a door, but I have no hands.',
+  'I have a route, but I am never found.',
+  'I have a handler, but nothing answers.',
+  'Every client asks for me — I return exactly nothing.',
 ]
+
+const ACCEPTED_ANSWERS = ['404', 'error 404', '404 error']
 
 function normalizeAnswer(raw) {
   return raw
@@ -33,13 +35,13 @@ export default function Game1() {
       setFeedback({ type: 'empty', text: 'You have to type something, inmate.' })
       return
     }
-    if (answer === 'key') {
+    if (ACCEPTED_ANSWERS.includes(answer)) {
       markDone('game1')
       setFeedback(null)
       return
     }
     setAttempts((n) => n + 1)
-    setFeedback({ type: 'wrong', text: 'Access denied — that key does not fit.' })
+    setFeedback({ type: 'wrong', text: 'Access denied — that number does not exist.' })
     setShakeTick((t) => t + 1)
   }
 
@@ -61,7 +63,7 @@ export default function Game1() {
             Game 01 · Puzzle
           </p>
           <h1 className="mt-1 font-display text-4xl tracking-[0.1em] sm:text-5xl">
-            THE RIDDLE
+            THE MISSING PACKET
           </h1>
         </div>
         <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-sm border border-jumpsuit-500/50 bg-jumpsuit-500/10 font-display text-2xl text-jumpsuit-400">
@@ -84,8 +86,9 @@ export default function Game1() {
             DOOR 01 SLIDES OPEN
           </h2>
           <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-concrete-300">
-            The slip was right — an old key hanging by the gate. The guard on
-            the far wing pretends he saw nothing. One door down, three to go.
+            The printout was right — the gate app stopped looking for your
+            door ages ago. You type the missing number into the panel and the
+            lock lets go like it was never closed. One door down, three to go.
           </p>
           <p className="mt-4 font-mono-ui text-[0.65rem] uppercase tracking-[0.25em] text-concrete-400">
             Rejected answers: {attempts}
@@ -99,13 +102,13 @@ export default function Game1() {
               <ArrowLeftIcon className="h-4 w-4" />
               Back to cell block
             </Link>
-            <span
-              className="inline-flex cursor-not-allowed items-center gap-2 border border-concrete-700 px-5 py-2.5 font-mono-ui text-[0.7rem] uppercase tracking-[0.2em] text-concrete-600"
-              title="Game 2 is still under construction"
+            <Link
+              to="/game/2"
+              className="inline-flex items-center gap-2 border border-concrete-500 px-5 py-2.5 font-mono-ui text-[0.7rem] font-bold uppercase tracking-[0.2em] text-concrete-200 transition-colors hover:border-jumpsuit-500 hover:text-jumpsuit-400"
             >
-              <CheckIcon className="h-3.5 w-3.5" />
-              Game 02 · Sealed
-            </span>
+              Game 02 · Take it
+              <ArrowRightIcon className="h-4 w-4" />
+            </Link>
           </div>
         </section>
       ) : (
@@ -123,11 +126,12 @@ export default function Game1() {
               aria-hidden="true"
             />
             <p className="font-mono-ui text-[0.6rem] uppercase tracking-[0.3em] text-jumpsuit-400">
-              Smuggled note · Found under the mattress
+              Printed bug report · Lifted from the intake tablet
             </p>
             <div className="paper-note mt-4 rounded-sm px-5 py-6 sm:px-8 sm:py-8">
               <p className="font-mono-ui text-[0.6rem] uppercase tracking-[0.3em] opacity-60">
-                Inmate {attempts ? `— attempt ${attempts + 1}` : '— psst, wake up'}
+                Reported by QA at 03:00{' '}
+                {attempts ? `— attempt ${attempts + 1}` : '— psst, wake up'}
               </p>
               <blockquote className="mt-3 space-y-1.5 text-lg leading-relaxed sm:text-xl">
                 {RIDDLE.map((line) => (
