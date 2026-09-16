@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
-import { ArrowRightIcon, CheckIcon, KeyIcon, LockIcon } from '../components/icons'
+import { ArrowRightIcon, CheckIcon, KeyIcon, LockIcon, StarIcon } from '../components/icons'
 import { escapeGame, games } from '../data/games'
+import { event as invite } from '../data/invite'
 import { useProgress } from '../state/progress-context'
 
 function StatusBadge({ done, locked }) {
@@ -155,7 +156,32 @@ export default function Home() {
         </Link>
       </section>
 
-      <section aria-label="Cell block utility">
+      <section aria-label="Cell block utility" className="flex flex-col gap-3">
+        <Link
+          to="/invite"
+          className="group flex flex-wrap items-center gap-x-4 gap-y-3 rounded-md border border-hazard/50 bg-hazard/5 p-4 backdrop-blur-sm transition-colors sm:gap-x-6 sm:p-5 hover:border-hazard hover:bg-hazard/10"
+        >
+          <span className="flex size-14 shrink-0 items-center justify-center rounded-sm border border-hazard/60 bg-hazard/10 text-hazard transition-colors group-hover:bg-hazard/20 sm:size-18">
+            <StarIcon className="h-7 w-7" />
+          </span>
+          <span className="min-w-0 flex-1 text-left">
+            <span className="block font-mono-ui text-[0.6rem] uppercase tracking-[0.25em] text-hazard/80">
+              Cell-block notice · Speaker summons
+            </span>
+            <span className="mt-1 block font-display text-2xl tracking-[0.12em] text-concrete-100 transition-colors group-hover:text-hazard-300 sm:text-[1.7rem]">
+              THE WANTED NOTICE
+            </span>
+            <span className="mt-0.5 block text-sm text-concrete-400">
+              {invite.blurb} The official invitation to software and mobile
+              application development.
+            </span>
+          </span>
+          <span className="hidden shrink-0 items-center gap-2 font-mono-ui text-[0.65rem] font-bold uppercase tracking-[0.2em] text-hazard/80 transition-colors group-hover:text-hazard-300 sm:inline-flex">
+            Read the notice
+            <ArrowRightIcon className="h-4 w-4" />
+          </span>
+        </Link>
+
         <Link
           to="/decypher"
           className="group flex flex-wrap items-center gap-x-4 gap-y-3 rounded-md border border-concrete-700 bg-concrete-900/40 p-4 backdrop-blur-sm transition-colors sm:gap-x-6 sm:p-5 hover:border-jumpsuit-500/60 hover:bg-concrete-800/60"

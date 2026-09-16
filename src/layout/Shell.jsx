@@ -5,9 +5,9 @@ import ProgressWarningToast from '../components/ProgressWarningToast'
 export default function Shell() {
   return (
     <div className="wall flex min-h-svh flex-col font-body text-concrete-100">
-      <div className="prison-bars pointer-events-none fixed inset-0" aria-hidden="true" />
+      <div className="prison-bars pointer-events-none fixed inset-0 print:hidden" aria-hidden="true" />
 
-      <header className="relative z-10">
+      <header className="relative z-10 print:hidden">
         <div className="hazard-stripes h-2" aria-hidden="true" />
         <div className="border-b border-concrete-700/80 bg-concrete-950/70 backdrop-blur-sm">
           <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
@@ -34,7 +34,7 @@ export default function Shell() {
         <Outlet />
       </main>
 
-      <footer className="relative z-10">
+      <footer className="relative z-10 print:hidden">
         <div className="border-t border-concrete-700/80 bg-concrete-950/70">
           <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-2 px-4 py-3 text-[0.65rem] font-mono-ui uppercase tracking-[0.22em] text-concrete-500 sm:px-6">
             <span>Escape attempt 1 of 4</span>

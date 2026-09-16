@@ -105,6 +105,22 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
 }
 
+/* Booking-photo height-chart lines */
+.mugshot-lines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(233, 234, 237, 0.7) 0px,
+    rgba(233, 234, 237, 0.7) 1px,
+    transparent 1px,
+    transparent 26px
+  );
+}
+
+/* Custody-photo grade for the wanted portraits */
+.mugshot-photo {
+  filter: grayscale(1) sepia(0.4) contrast(1.08) brightness(0.96);
+}
+
 @keyframes shake-x {
   10%,
   90% {
@@ -183,5 +199,21 @@
   .animate-unlock,
   .animate-stamp {
     animation: none;
+  }
+}
+
+@media print {
+  @page {
+    margin: 8mm;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .paper-note,
+  .tape {
+    box-shadow: none;
   }
 }

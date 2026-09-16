@@ -28,12 +28,19 @@ There are no automated tests. Verify changes with `npm run lint` + a
 ## Architecture & routing
 
 - `src/App.jsx` — `<BrowserRouter>` + `<ProgressProvider>`, routes nested in
-  `Shell`: `/` (Home), `/game/1` … `/game/4`, `/escape`, `*` → redirect `/`.
+  `Shell`: `/` (Home), `/game/1` … `/game/4`, `/decypher`, `/invite`,
+  `/invite/:slug` (personal speaker summons), `/escape`, `*` → redirect `/`.
 - `src/layout/Shell.jsx` — global chrome: header, footer, hazard-tape strips,
   and the fixed `.prison-bars` overlay. New screens render inside `<Outlet />`.
 - `src/data/games.js` — **single source of truth**: the `games` array (4 cells)
   and `escapeGame`. `Home.jsx` and `Escape.jsx` render entirely from this data
   plus progress state; never hardcode a game list elsewhere.
+- `src/data/invite.js` — **single source of truth for the speaker invitation**:
+  the `event` details and the 3 `speakers` (name/role/topic/personalNote/photo).
+  `Invite.jsx` (`/invite`, public lineup) and `SpeakerInvite.jsx`
+  (`/invite/:slug`, personalized, direct-link only) render from it via
+  `getSpeaker(slug)`, as does the Home "Wanted notice" card. Replace the `TBA`
+  placeholders there, never in the pages.
 - `src/state/progress-context.js` / `ProgressProvider.jsx` — in-memory progress:
   `useProgress()` returns `{ completed, isDone(id), markDone(id) }`.
   `useProgress` throws if called outside the provider. Data resets on reload

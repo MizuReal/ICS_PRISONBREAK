@@ -7,6 +7,8 @@ import Game2 from './pages/Game2'
 import Game3 from './pages/Game3'
 import Game4 from './pages/Game4'
 import Home from './pages/Home'
+import Invite from './pages/Invite'
+import SpeakerInvite from './pages/SpeakerInvite'
 import ProgressProvider from './state/ProgressProvider'
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
             <Route path="game/3" element={<Game3 />} />
             <Route path="game/4" element={<Game4 />} />
             <Route path="decypher" element={<Decypher />} />
+            <Route path="invite" element={<Invite />} />
+            <Route path="invite/:slug" element={<SpeakerInvite />} />
             <Route path="escape" element={<Escape />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
